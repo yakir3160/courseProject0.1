@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema(
             minlength: [6, "Password must be at least 6 characters long"],                     
             select: false,
         },
-        profilePicture: {
+        profileImage: {
             type: String,
             default: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp'
         }

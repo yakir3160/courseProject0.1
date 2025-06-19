@@ -4,6 +4,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
+# image files
+uploads/
+
 
 # Node.js
 node_modules/
