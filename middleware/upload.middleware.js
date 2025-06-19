@@ -11,9 +11,11 @@ import { error } from "console";
 // //לטפל בהעלאה של הקובץ בשמירה שלו ויצירת קישור לקובץ 
 
 // לייצר תיקיית uploads
-const uploadsDir = '/uploads';
+const uploadsDir = 'uploads/';
 if(!fs.existsSync(uploadsDir))
+{
     fs.mkdirSync(uploadsDir,{recursive:true});
+}
 
 //לקבוע איפה יישמרו 
 const storage = multer.diskStorage({
