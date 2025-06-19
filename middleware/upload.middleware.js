@@ -14,8 +14,9 @@ const uploadsDir = 'uploads/';
 if(!fs.existsSync(uploadsDir))
 {
     fs.mkdirSync(uploadsDir,{recursive:true});
+    logger.info(`Uploads directory created at ${uploadsDir}`);
 }
-logger.info(`Uploads directory created at ${uploadsDir}`);
+
 
 //לקבוע איפה יישמרו 
 const storage = multer.diskStorage({
@@ -25,9 +26,10 @@ const storage = multer.diskStorage({
         cb(null,uniqueFileName);
     }
 })
-logger.info(`Storage configured to save files in ${uploadsDir} with unique name`);
-// להגדיר פילטר לבדיקה שהקובץ אכן תמונה
-logger.info('Filter function to allow only image files is set up');
+
+
+
+// פונקציית סינון קבצים - רק תמונות
 const filterFiles = (req,file,cb) =>{
     file.mimetype.startsWith('image/')
     ? cb(null,true) 
@@ -36,14 +38,14 @@ const filterFiles = (req,file,cb) =>{
 }
 
 // ליצור אובייקט של העלאה 
-logger.info('Multer upload middleware is being configured');
+
 const upload = multer({
     storage,
     fileFilter: filterFiles,
     limits:{fileSize : 10 * 1024 * 1024}
 })
 //ייצוא פונקציית העלאת התמונה 
-logger.info('uploadSingleFile middleware is exported for use in routes');
+
 export const uploadSingleFile = upload.single('profileImage')
 
 
