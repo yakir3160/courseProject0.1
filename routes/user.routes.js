@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { getAllUsers, userActionById } from '../controller/user.controller.js'
+import { uploadSingleFile, handleProfileImgUpload } from "../middleware/upload.middleware.js";
 
 const router = Router();
 
